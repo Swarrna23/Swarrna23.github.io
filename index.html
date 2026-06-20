@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swarna Rathna S. — AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+/* ─── TOKENS ─── */
+:root{
+  --bg:       #0d0f14;
+  --bg2:      #12151d;
+  --bg3:      #171b27;
+  --border:   #1f2537;
+  --border2:  #2a3050;
+  --blue:     #4c8ef8;
+  --blue-dim: #1e3a6e;
+  --cyan:     #38bdf8;
+  --rust:     #f97316;
+  --rust-dim: #4a2200;
+  --green:    #34d399;
+  --green-dim:#064e35;
+  --purple:   #a78bfa;
+  --text1:    #e8ecf6;
+  --text2:    #8b96b0;
+  --text3:    #4e5a72;
+  --display:  'Space Grotesk', sans-serif;
+  --mono:     'JetBrains Mono', monospace;
+  --body:     'Inter', sans-serif;
+}
+
+/* ─── BASE ─── */
+body{
+  font-family:var(--body);
+  background:var(--bg);
+  color:var(--text1);
+  line-height:1.6;
+  font-size:15px;
+  overflow-x:hidden;
+}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:100;
+  background:rgba(13,15,20,0.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;
+}
+.nav-logo{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  color:var(--blue);
+  letter-spacing:0.05em;
+}
+.nav-links{
+  display:flex;gap:2rem;list-style:none;
+}
+.nav-links a{
+  font-family:var(--mono);
+  font-size:0.72rem;
+  color:var(--text2);
+  text-decoration:none;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--blue);}
+.nav-resume{
+  font-family:var(--mono);
+  font-size:0.72rem;
+  background:transparent;
+  border:1px solid var(--blue);
+  color:var(--blue);
+  padding:0.35rem 0.9rem;
+  border-radius:6px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:background 0.2s,color 0.2s;
+  letter-spacing:0.06em;
+}
+.nav-resume:hover{background:var(--blue);color:#fff;}
+
+/* ─── HERO ─── */
+#home{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:7rem 2rem 4rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(76,142,248,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76,142,248,0.04) 1px, transparent 1px);
+  background-size:48px 48px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
+}
+.hero-glow{
+  position:absolute;
+  width:600px;height:600px;
+  background:radial-gradient(circle, rgba(76,142,248,0.08) 0%, transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-60%);
+  pointer-events:none;
+}
+.hero-content{
+  position:relative;
+  max-width:780px;
+  text-align:center;
+}
+.hero-eyebrow{
+  font-family:var(--mono);
+  font-size:0.72rem;
+  color:var(--blue);
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  margin-bottom:1.5rem;
+  display:flex;align-items:center;justify-content:center;gap:0.7rem;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{
+  content:'';display:block;width:40px;height:1px;background:var(--blue-dim);
+}
+.hero-name{
+  font-family:var(--display);
+  font-size:clamp(2.8rem, 7vw, 5rem);
+  font-weight:700;
+  letter-spacing:-0.03em;
+  color:var(--text1);
+  line-height:1.05;
+  margin-bottom:0.5rem;
+}
+.hero-name .accent{color:var(--blue);}
+.hero-tagline{
+  font-family:var(--display);
+  font-size:clamp(1rem,2.2vw,1.3rem);
+  font-weight:400;
+  color:var(--text2);
+  margin-bottom:2.2rem;
+  line-height:1.5;
+}
+.hero-tagline strong{color:var(--cyan);font-weight:500;}
+.hero-chips{
+  display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:2.5rem;
+}
+.chip{
+  font-family:var(--mono);
+  font-size:0.68rem;
+  background:var(--bg3);
+  border:1px solid var(--border2);
+  color:var(--text2);
+  padding:0.3rem 0.75rem;
+  border-radius:20px;
+  letter-spacing:0.05em;
+}
+.chip.blue{background:rgba(76,142,248,0.08);border-color:rgba(76,142,248,0.3);color:var(--blue);}
+.chip.green{background:rgba(52,211,153,0.08);border-color:rgba(52,211,153,0.3);color:var(--green);}
+.hero-actions{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+}
+.btn-primary{
+  font-family:var(--mono);font-size:0.78rem;letter-spacing:0.05em;
+  background:var(--blue);color:#fff;border:none;
+  padding:0.7rem 1.6rem;border-radius:8px;cursor:pointer;
+  text-decoration:none;transition:opacity 0.2s,transform 0.2s;
+  display:inline-flex;align-items:center;gap:0.5rem;
+}
+.btn-primary:hover{opacity:0.85;transform:translateY(-1px);}
+.btn-ghost{
+  font-family:var(--mono);font-size:0.78rem;letter-spacing:0.05em;
+  background:transparent;color:var(--text2);border:1px solid var(--border2);
+  padding:0.7rem 1.6rem;border-radius:8px;cursor:pointer;
+  text-decoration:none;transition:border-color 0.2s,color 0.2s,transform 0.2s;
+  display:inline-flex;align-items:center;gap:0.5rem;
+}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px);}
+.hero-socials{
+  margin-top:3rem;
+  display:flex;gap:1.5rem;justify-content:center;
+}
+.hero-socials a{
+  font-family:var(--mono);font-size:0.68rem;letter-spacing:0.08em;
+  color:var(--text3);text-decoration:none;
+  text-transform:uppercase;
+  transition:color 0.2s;
+  display:flex;align-items:center;gap:0.4rem;
+}
+.hero-socials a:hover{color:var(--blue);}
+
+/* ─── SECTION WRAPPER ─── */
+.section{
+  max-width:1000px;
+  margin:0 auto;
+  padding:5rem 2rem;
+}
+.section-eyebrow{
+  font-family:var(--mono);
+  font-size:0.68rem;
+  color:var(--blue);
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  margin-bottom:0.6rem;
+  display:flex;align-items:center;gap:0.7rem;
+}
+.section-eyebrow::after{
+  content:'';display:block;flex:1;height:1px;background:var(--border);max-width:60px;
+}
+.section-title{
+  font-family:var(--display);
+  font-size:clamp(1.6rem,3vw,2.2rem);
+  font-weight:700;
+  color:var(--text1);
+  letter-spacing:-0.02em;
+  margin-bottom:3rem;
+}
+
+/* ─── ABOUT ─── */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+}
+.about-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:1.4rem 1.6rem;
+}
+.about-card.full{grid-column:1/-1;}
+.about-label{
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--text3);margin-bottom:0.6rem;
+}
+.about-text{font-size:0.9rem;color:var(--text2);line-height:1.75;}
+.about-text strong{color:var(--cyan);font-weight:500;}
+.stat-row{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1rem;}
+.stat{display:flex;flex-direction:column;gap:0.2rem;}
+.stat-num{font-family:var(--display);font-size:1.6rem;font-weight:700;color:var(--blue);}
+.stat-label{font-family:var(--mono);font-size:0.65rem;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;}
+
+/* ─── SKILLS GRID ─── */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+  gap:1rem;
+}
+.skill-group{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:1.1rem 1.2rem;
+}
+.skill-group-label{
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:0.75rem;
+}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.35rem;}
+.sk{
+  font-family:var(--mono);font-size:0.67rem;
+  background:var(--bg3);border:1px solid var(--border2);
+  color:var(--text2);padding:0.18rem 0.5rem;border-radius:4px;
+}
+.sk.hl{background:rgba(76,142,248,0.1);border-color:rgba(76,142,248,0.3);color:var(--blue);}
+
+/* ─── TIMELINE (Experience/Education) ─── */
+.timeline{display:flex;flex-direction:column;gap:1.2rem;}
+.tl-item{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:0 2rem;
+  position:relative;
+}
+.tl-item::before{
+  content:'';
+  position:absolute;
+  left:168px;top:8px;bottom:-1.2rem;
+  width:1px;background:var(--border);
+}
+.tl-item:last-child::before{display:none;}
+.tl-date{
+  font-family:var(--mono);font-size:0.68rem;
+  color:var(--text3);padding-top:0.15rem;
+  text-align:right;letter-spacing:0.03em;
+}
+.tl-dot{
+  position:absolute;left:163px;top:5px;
+  width:11px;height:11px;
+  background:var(--blue);border-radius:50%;
+  border:2px solid var(--bg);
+  box-shadow:0 0 8px rgba(76,142,248,0.5);
+}
+.tl-body{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:1.2rem 1.4rem;
+  margin-bottom:0;
+}
+.tl-role{
+  font-family:var(--display);font-size:0.95rem;font-weight:600;
+  color:var(--text1);margin-bottom:0.2rem;
+}
+.tl-org{
+  font-family:var(--mono);font-size:0.72rem;color:var(--blue);
+  margin-bottom:0.6rem;letter-spacing:0.03em;
+}
+.tl-desc{font-size:0.82rem;color:var(--text2);line-height:1.65;}
+.live-pill{
+  display:inline-flex;align-items:center;gap:0.3rem;
+  font-family:var(--mono);font-size:0.63rem;font-weight:600;
+  background:rgba(52,211,153,0.1);color:var(--green);
+  border:1px solid rgba(52,211,153,0.3);
+  padding:0.15rem 0.5rem;border-radius:20px;margin-left:0.5rem;
+  vertical-align:middle;
+}
+.live-dot-g{
+  width:5px;height:5px;background:var(--green);
+  border-radius:50%;display:inline-block;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+
+/* ─── PROJECT CARDS ─── */
+.projects-grid{display:flex;flex-direction:column;gap:1.5rem;}
+.proj-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  transition:border-color 0.2s;
+}
+.proj-card:hover{border-color:var(--border2);}
+.proj-card.rust-card{border-left:3px solid var(--rust);}
+.proj-card.hw-card{border-left:3px solid var(--cyan);}
+.proj-card.blue-card{border-left:3px solid var(--blue);}
+.proj-card.purple-card{border-left:3px solid var(--purple);}
+.proj-card.green-card{border-left:3px solid var(--green);}
+
+.proj-header{
+  padding:1.4rem 1.6rem 0;
+  display:flex;align-items:flex-start;justify-content:space-between;
+  flex-wrap:wrap;gap:0.6rem;
+}
+.proj-title{
+  font-family:var(--display);font-size:1.1rem;font-weight:700;
+  color:var(--text1);display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;
+}
+.proj-subtitle{
+  font-family:var(--mono);font-size:0.7rem;color:var(--text3);
+  padding:0.2rem 1.6rem 0;margin-bottom:0.8rem;
+  letter-spacing:0.02em;
+}
+
+/* JD pills */
+.jd-row{
+  display:flex;flex-wrap:wrap;gap:0.35rem;
+  padding:0 1.6rem;margin-bottom:1rem;
+}
+.jd-p{
+  font-family:var(--mono);font-size:0.62rem;font-weight:600;
+  background:rgba(249,115,22,0.08);color:#f97316;
+  border:1px solid rgba(249,115,22,0.25);
+  padding:0.14rem 0.5rem;border-radius:20px;
+  letter-spacing:0.02em;
+}
+
+/* accordion */
+.proj-accordion{border-top:1px solid var(--border);}
+.acc-tab{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.9rem 1.6rem;cursor:pointer;
+  font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--text3);
+  border-bottom:1px solid var(--border);
+  transition:color 0.2s,background 0.2s;
+  user-select:none;
+}
+.acc-tab:hover{color:var(--blue);background:rgba(76,142,248,0.03);}
+.acc-tab.active{color:var(--blue);}
+.acc-arrow{transition:transform 0.25s;font-size:0.65rem;}
+.acc-tab.active .acc-arrow{transform:rotate(180deg);}
+.acc-body{
+  display:none;
+  padding:1.1rem 1.6rem 1.3rem;
+  border-bottom:1px solid var(--border);
+}
+.acc-body.open{display:block;}
+
+/* use case */
+.use-case-text{font-size:0.85rem;color:var(--text2);line-height:1.75;}
+
+/* tech stack inside accordion */
+.stack-rows{display:flex;flex-direction:column;gap:0.5rem;}
+.stack-row{display:flex;align-items:flex-start;gap:0.8rem;}
+.stack-cat{
+  font-family:var(--mono);font-size:0.62rem;font-weight:700;
+  color:var(--text3);min-width:72px;
+  padding-top:0.24rem;flex-shrink:0;
+  text-transform:uppercase;letter-spacing:0.06em;
+}
+.tags{display:flex;flex-wrap:wrap;gap:0.3rem;}
+.tag{
+  font-family:var(--mono);font-size:0.65rem;font-weight:500;
+  padding:0.16rem 0.48rem;border-radius:4px;
+}
+.tag.lang  {background:rgba(76,142,248,0.1);color:#6baaf8;border:1px solid rgba(76,142,248,0.2);}
+.tag.fw    {background:rgba(167,139,250,0.1);color:var(--purple);border:1px solid rgba(167,139,250,0.2);}
+.tag.model {background:rgba(52,211,153,0.08);color:var(--green);border:1px solid rgba(52,211,153,0.2);}
+.tag.db    {background:rgba(167,139,250,0.08);color:#c4b5fd;border:1px solid rgba(167,139,250,0.15);}
+.tag.infra {background:rgba(249,115,22,0.08);color:#fb923c;border:1px solid rgba(249,115,22,0.2);}
+.tag.cv    {background:rgba(56,189,248,0.08);color:var(--cyan);border:1px solid rgba(56,189,248,0.2);}
+.tag.hl-rust{background:rgba(249,115,22,0.15);color:var(--rust);border:1px solid rgba(249,115,22,0.4);font-weight:700;}
+.tag.hl-hw {background:rgba(56,189,248,0.15);color:var(--cyan);border:1px solid rgba(56,189,248,0.4);font-weight:700;}
+
+/* flow steps */
+.flow-steps{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.flow-steps li{
+  display:flex;align-items:flex-start;gap:0.7rem;
+  font-size:0.82rem;color:var(--text2);line-height:1.65;
+}
+.sn{
+  font-family:var(--mono);font-size:0.62rem;font-weight:600;
+  color:var(--blue);background:rgba(76,142,248,0.12);
+  border:1px solid rgba(76,142,248,0.25);
+  border-radius:4px;padding:0.12rem 0.38rem;
+  min-width:24px;text-align:center;
+  margin-top:0.2rem;flex-shrink:0;
+}
+
+/* skills list */
+.skills-ul{list-style:none;display:flex;flex-direction:column;gap:0.45rem;}
+.skills-ul li{
+  display:flex;align-items:flex-start;gap:0.55rem;
+  font-size:0.82rem;color:var(--text2);line-height:1.6;
+}
+.sd{
+  width:5px;height:5px;background:var(--blue);
+  border-radius:50%;margin-top:0.52rem;flex-shrink:0;
+}
+.hl-rust-text{
+  background:rgba(249,115,22,0.12);color:var(--rust);
+  font-weight:700;border-radius:3px;padding:0 3px;
+  border-bottom:2px solid var(--rust);
+}
+.hl-hw-text{
+  background:rgba(56,189,248,0.12);color:var(--cyan);
+  font-weight:700;border-radius:3px;padding:0 3px;
+  border-bottom:2px solid var(--cyan);
+}
+
+/* ─── CONTACT ─── */
+#contact{border-top:1px solid var(--border);}
+.contact-inner{
+  max-width:600px;margin:0 auto;text-align:center;
+  padding:5rem 2rem;
+}
+.contact-title{
+  font-family:var(--display);font-size:clamp(1.8rem,4vw,2.6rem);
+  font-weight:700;color:var(--text1);margin-bottom:1rem;
+  letter-spacing:-0.02em;
+}
+.contact-sub{font-size:0.9rem;color:var(--text2);margin-bottom:2.5rem;line-height:1.7;}
+.contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.contact-link{
+  font-family:var(--mono);font-size:0.72rem;letter-spacing:0.06em;
+  text-decoration:none;
+  padding:0.6rem 1.2rem;border-radius:8px;
+  transition:all 0.2s;
+  display:inline-flex;align-items:center;gap:0.45rem;
+}
+.contact-link.email{background:rgba(76,142,248,0.1);color:var(--blue);border:1px solid rgba(76,142,248,0.3);}
+.contact-link.email:hover{background:var(--blue);color:#fff;}
+.contact-link.gh{background:var(--bg3);color:var(--text2);border:1px solid var(--border2);}
+.contact-link.gh:hover{border-color:var(--blue);color:var(--blue);}
+.contact-link.li{background:var(--bg3);color:var(--text2);border:1px solid var(--border2);}
+.contact-link.li:hover{border-color:var(--cyan);color:var(--cyan);}
+
+/* ─── FOOTER ─── */
+footer{
+  text-align:center;padding:1.5rem 2rem;
+  border-top:1px solid var(--border);
+  font-family:var(--mono);font-size:0.65rem;
+  color:var(--text3);letter-spacing:0.05em;
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:700px){
+  .tl-item{grid-template-columns:1fr;}
+  .tl-item::before{display:none;}
+  .tl-dot{display:none;}
+  .tl-date{text-align:left;font-size:0.65rem;color:var(--text3);margin-bottom:0.3rem;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-card.full{grid-column:1;}
+  nav .nav-links{display:none;}
+}
+@media(max-width:480px){
+  .hero-name{font-size:2.2rem;}
+  .section{padding:3.5rem 1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">swarna@ai:~$</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:1947swarna@gmail.com" class="nav-resume">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">AI Engineer · Chennai, India</div>
+    <h1 class="hero-name">Swarna Rathna<span class="accent"> S.</span></h1>
+    <p class="hero-tagline">
+      Building <strong>production CV systems</strong> and <strong>LLM pipelines</strong> that deploy —<br>
+      from edge NPU inference to enterprise AI safety gateways.
+    </p>
+    <div class="hero-chips">
+      <span class="chip blue">Computer Vision</span>
+      <span class="chip blue">Edge AI · Hailo NPU</span>
+      <span class="chip blue">LLM · RAG · Agents</span>
+      <span class="chip">Pattern Recognition</span>
+      <span class="chip">YOLOv8 · ArcFace · OpenCV</span>
+      <span class="chip green">2 Live Deployments</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View Projects ↓</a>
+      <a href="#contact" class="btn-ghost">Contact Me</a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://github.com/Swarrna23" target="_blank">⌥ GitHub</a>
+      <a href="https://www.linkedin.com/in/swarrna-rathna" target="_blank">⌥ LinkedIn</a>
+      <a href="mailto:1947swarna@gmail.com">⌥ Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section reveal">
+    <div class="section-eyebrow">01 — About</div>
+    <h2 class="section-title">Who I Am</h2>
+    <div class="about-grid">
+      <div class="about-card full">
+        <div class="about-label">Profile</div>
+        <div class="about-text">
+          I'm an <strong>Associate AI Engineer at Xerago, Chennai</strong> with a background in Mathematics (B.Sc., MOP Vaishnav) and Data Science (M.Sc., VIT Vellore). I build AI systems that actually ship — from <strong>edge computer vision on Raspberry Pi Hailo NPU</strong> deployed at a live jewelry store, to a <strong>medical imaging tool running at Aravind Eye Hospital</strong> under Google ARDA. My work spans multi-camera Re-ID pipelines, LLM safety gateways, agentic hiring platforms, and behavioral ML for conversion optimization. I care about systems that are production-grade, not just demo-ready.
+        </div>
+        <div class="stat-row">
+          <div class="stat"><span class="stat-num">2</span><span class="stat-label">Live Deployments</span></div>
+          <div class="stat"><span class="stat-num">6</span><span class="stat-label">Projects Built</span></div>
+          <div class="stat"><span class="stat-num">8+</span><span class="stat-label">CV Models Shipped</span></div>
+          <div class="stat"><span class="stat-num">1yr</span><span class="stat-label">Industry Exp.</span></div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-label">Education</div>
+        <div class="about-text">
+          <strong>M.Sc. Data Science</strong><br>VIT Vellore<br><br>
+          <strong>B.Sc. Mathematics</strong><br>MOP Vaishnav College, Chennai
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-label">Currently</div>
+        <div class="about-text">
+          <strong>Associate AI Engineer</strong><br>Xerago, Chennai<br>Jun 2025 – Present<br><br>
+          Building edge CV, LLM agents, and AI safety systems for enterprise clients.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section reveal">
+    <div class="section-eyebrow">02 — Experience</div>
+    <h2 class="section-title">Where I've Worked</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-date">Jun 2025 – Present</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-role">Associate AI Engineer</div>
+          <div class="tl-org">Xerago · Chennai</div>
+          <div class="tl-desc">Built 6 production AI systems spanning edge computer vision (Hailo NPU), LLM safety gateways with Rust-accelerated inference, agentic hiring platforms with YOLOv8 proctoring, conversational BI pipelines, and behavioral ML for conversion optimization. Two projects deployed live at VBJ Jewellery and Aravind Eye Hospital.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Mar 2025 – Jun 2025</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-role">GenAI Engineer Intern</div>
+          <div class="tl-org">Reelwise / Brainbrix</div>
+          <div class="tl-desc">Built an agentic LLM pipeline converting natural-language prompts to structured JSON diagram specifications via FastAPI. Applied chain-of-thought and few-shot prompt engineering to improve JSON schema validity and output consistency.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Dec 2024 – Apr 2025</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-role">AI / ML Intern
+            <span class="live-pill"><span class="live-dot-g"></span>Live</span>
+          </div>
+          <div class="tl-org">Aurolab · Google ARDA Program</div>
+          <div class="tl-desc">Developed a FastAPI medical imaging pipeline integrating a CNN-based fundus disease detection model. Implemented automated image preprocessing (transformation, normalization, artifact filtering) and PDF report generation. Deployed live at Aravind Eye Hospital under Google ARDA.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section reveal">
+    <div class="section-eyebrow">03 — Projects</div>
+    <h2 class="section-title">What I've Built</h2>
+    <div class="projects-grid">
+
+      <!-- InStore Intelligence -->
+      <div class="proj-card hw-card">
+        <div class="proj-header">
+          <div class="proj-title">
+            InStore Intelligence
+            <span class="live-pill"><span class="live-dot-g"></span>Live · VBJ Jewellery</span>
+          </div>
+        </div>
+        <div class="proj-subtitle">Edge CV · Retail Analytics · Hailo NPU · ArcFace + OSNet Dual Re-ID · Qdrant · Frigate NVR</div>
+        <div class="jd-row">
+          <span class="jd-p">Pattern Recognition (PR)</span>
+          <span class="jd-p">Feature Detection & Recognition</span>
+          <span class="jd-p">Exclusion of False Detections</span>
+          <span class="jd-p">PR Success Rate Analytics</span>
+          <span class="jd-p">GPU / NPU Inference on Edge</span>
+          <span class="jd-p">Highest Detection Success Rate Methods</span>
+        </div>
+        <div class="proj-accordion">
+          <div class="acc-tab active" onclick="toggle(this)"><span>Use Case</span><span class="acc-arrow">▲</span></div>
+          <div class="acc-body open">
+            <div class="use-case-text">Tracks anonymous customers across multi-camera jewelry store layouts using face and body Re-ID without POS login — separating staff from customers, measuring dwell and footfall, and triggering real-time CRE alerts to sales consultants for unattended customers. Deployed live at VBJ Jewellery, Chennai.</div>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Tech Stack</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <div class="stack-rows">
+              <div class="stack-row"><span class="stack-cat">Languages</span><div class="tags"><span class="tag lang">Python</span><span class="tag lang">JavaScript</span><span class="tag lang">TypeScript</span><span class="tag lang">SQL</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Frameworks</span><div class="tags"><span class="tag fw">FastAPI</span><span class="tag fw">React 19</span><span class="tag fw">React Native Expo</span><span class="tag fw">SQLAlchemy</span></div></div>
+              <div class="stack-row"><span class="stack-cat">CV / Image</span><div class="tags"><span class="tag cv">SCRFD-10G</span><span class="tag cv">ArcFace R50 (512-d)</span><span class="tag cv">OSNet (512-d body Re-ID)</span><span class="tag hl-hw">⬡ Hailo NPU (HEF)</span><span class="tag cv">OpenCV</span><span class="tag cv">Cosine ANN</span><span class="tag cv">Pose-aware Weighting</span></div></div>
+              <div class="stack-row"><span class="stack-cat">AI / ML</span><div class="tags"><span class="tag model">2-of-3 Stabilization Voting</span><span class="tag model">Anti-dup Window (30s)</span><span class="tag model">DBSCAN Group Clustering</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Database</span><div class="tags"><span class="tag db">PostgreSQL 16</span><span class="tag db">Redis 7 (checkpoints)</span><span class="tag db">Qdrant (512-d face vectors)</span><span class="tag db">Qdrant (512-d body vectors)</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Infra</span><div class="tags"><span class="tag infra">Docker Compose</span><span class="tag infra">Frigate NVR</span><span class="tag infra">MQTT (Mosquitto)</span><span class="tag infra">Prometheus</span><span class="tag infra">Grafana</span><span class="tag hl-hw">⬡ Raspberry Pi (edge)</span><span class="tag hl-hw">⬡ Intel Hub</span></div></div>
+            </div>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Project Flow</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <ol class="flow-steps">
+              <li><span class="sn">01</span>Frigate NVR captures RTSP/USB frames at 2 FPS → MQTT snapshots forwarded to FastAPI core engine on <span class="hl-hw-text">Intel hub</span></li>
+              <li><span class="sn">02</span><span class="hl-hw-text">Raspberry Pi Hailo NPU</span> runs SCRFD face detection → ArcFace R50 extracts 512-d face embedding; OSNet extracts 512-d body embedding when face is occluded or overhead camera</li>
+              <li><span class="sn">03</span>Dual-modality fusion with pose-aware weighting (discard |pitch|&gt;45°) → Qdrant ANN cosine search matches or mints new anonymous UUID (face 0.45 / staff 0.82 / fusion 0.75)</li>
+              <li><span class="sn">04</span>2-of-3 stabilization voting + 30s anti-duplication window eliminates false mints → gate FSM tracks entry/exit with stereo IoU deduplication and drift reconciliation alerting at ±3</li>
+              <li><span class="sn">05</span>Customer journey, dwell, and coordinates persisted in PostgreSQL → React portal renders KPIs/heatmaps → Expo mobile app triggers CRE salesman alerts</li>
+            </ol>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Skills Used</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <ul class="skills-ul">
+              <li><span class="sd"></span>Pattern recognition — ArcFace R50 + OSNet dual-modality Re-ID with tiered confidence thresholds and false detection exclusion (directly mirrors JD: PR alignment, recognition, exclusion of false detections)</li>
+              <li><span class="sd"></span>Automatic feature selection — 2-of-3 stabilization voting and pose-aware weighting to find highest detection success rate (directly mirrors JD: methods to automatically find features with highest success rate)</li>
+              <li><span class="sd"></span><span class="hl-hw-text">Edge NPU inference on Raspberry Pi Hailo hardware</span> — CV models (SCRFD, ArcFace, OSNet) deployed on Hailo HEF format and served via HTTP to Intel hub orchestrator (directly matches JD: adapt algorithms to run on GPU for extra speed)</li>
+              <li><span class="sd"></span>Qdrant vector database ANN search with 512-d cosine similarity for real-time identity matching across multiple cameras</li>
+              <li><span class="sd"></span>Gate FSM engineering with stereo IoU deduplication, provisional track buffering, and drift reconciliation alerting at ±3 occupancy skew</li>
+              <li><span class="sd"></span><span class="hl-hw-text">Hub-edge split architecture</span> — Raspberry Pi handles NPU inference; Intel hub handles orchestration, PostgreSQL, Redis, Qdrant, and MQTT brokering across the store network</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- School Safety -->
+      <div class="proj-card blue-card">
+        <div class="proj-header">
+          <div class="proj-title">School Safety Intelligence</div>
+        </div>
+        <div class="proj-subtitle">Campus CCTV Analytics · 16-Camera Multi-model CV Pipeline · pgvector · OpenVINO · WhatsApp + Telegram Alerting</div>
+        <div class="jd-row">
+          <span class="jd-p">Pattern Recognition (PR)</span>
+          <span class="jd-p">Defect / Anomaly Detection</span>
+          <span class="jd-p">Recognition & False Detection Exclusion</span>
+          <span class="jd-p">OpenCV Python</span>
+          <span class="jd-p">Deep Learning CNN</span>
+          <span class="jd-p">Noise Reduction Before Feature Detection</span>
+        </div>
+        <div class="proj-accordion">
+          <div class="acc-tab active" onclick="toggle(this)"><span>Use Case</span><span class="acc-arrow">▲</span></div>
+          <div class="acc-body open">
+            <div class="use-case-text">Automates campus security monitoring across 16 concurrent camera streams at 15 FPS — detecting unknown persons, wrong-gender restroom access, and after-hours violations in real time, replacing manual CCTV monitoring with intelligent multi-channel alerting via WebSocket, Telegram, and WhatsApp.</div>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Tech Stack</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <div class="stack-rows">
+              <div class="stack-row"><span class="stack-cat">Languages</span><div class="tags"><span class="tag lang">Python</span><span class="tag lang">TypeScript</span><span class="tag lang">SQL</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Frameworks</span><div class="tags"><span class="tag fw">FastAPI</span><span class="tag fw">React 18</span><span class="tag fw">Pydantic v2</span><span class="tag fw">SQLAlchemy</span></div></div>
+              <div class="stack-row"><span class="stack-cat">CV / Image</span><div class="tags"><span class="tag cv">SCRFD-10G</span><span class="tag cv">ArcFace (InsightFace)</span><span class="tag cv">OpenVINO person-detection-0202</span><span class="tag cv">OpenVINO ReID-retail-0277</span><span class="tag cv">OSNet x1.0</span><span class="tag cv">MediaPipe</span><span class="tag cv">ByteTrack</span><span class="tag cv">OC-SORT</span><span class="tag cv">OpenCV</span><span class="tag cv">Shapely (zones)</span><span class="tag cv">ONNX Runtime</span></div></div>
+              <div class="stack-row"><span class="stack-cat">AI / ML</span><div class="tags"><span class="tag model">512-d Face Embeddings</span><span class="tag model">256-d Body Embeddings</span><span class="tag model">Top-K Dominance Voting</span><span class="tag model">Frame Quality Validator</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Database</span><div class="tags"><span class="tag db">PostgreSQL + pgvector (HNSW)</span><span class="tag db">FAISS (CPU fallback)</span><span class="tag db">BYTEA (snapshot store)</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Infra</span><div class="tags"><span class="tag infra">Docker</span><span class="tag infra">FFmpeg HLS</span><span class="tag infra">Frigate NVR</span><span class="tag infra">MQTT</span><span class="tag infra">WhatsApp Meta Cloud API</span><span class="tag infra">Telegram Bot API</span></div></div>
+            </div>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Project Flow</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <ol class="flow-steps">
+              <li><span class="sn">01</span>RTSP/Frigate MQTT feeds enter per-camera pipeline at 15 FPS → frame quality validator rejects blurred and flat frames before inference (noise reduction before feature detection)</li>
+              <li><span class="sn">02</span>OpenVINO person-detection-0202 localizes persons → SCRFD-10G detects faces → ArcFace extracts 512-d embeddings → pgvector HNSW cosine search matches against enrolled gallery</li>
+              <li><span class="sn">03</span>OSNet x1.0 gender classification (k-NN vote, top_k=5) enforces restroom zone policies → OpenVINO ReID-retail-0277 handles occluded faces via 256-d body embeddings</li>
+              <li><span class="sn">04</span>Zone engine evaluates Shapely polygon membership → AlertEngine fires on violation (unknown, wrong gender, after-hours)</li>
+              <li><span class="sn">05</span>Alerts pushed via WebSocket + Telegram + WhatsApp with permanent audit retention → unknown faces queued for human-in-the-loop review</li>
+            </ol>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Skills Used</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <ul class="skills-ul">
+              <li><span class="sd"></span>Multi-model CV pipeline in production — SCRFD + ArcFace + OpenVINO + OSNet across 16 concurrent streams at 15 FPS with 500ms hot-path SLO</li>
+              <li><span class="sd"></span>pgvector HNSW embedding search (512-d face, 256-d body) with FAISS fallback — top-K dominance voting for highest-confidence pattern recognition and false detection exclusion</li>
+              <li><span class="sd"></span>Frame quality validation — blur detection and flat-frame rejection before inference (directly matches JD: noise reduction to find known features)</li>
+              <li><span class="sd"></span>Zone-aware digital fencing using Shapely polygon geometry — anomaly detection mapped to zone violation detection</li>
+              <li><span class="sd"></span>ByteTrack/OC-SORT multi-object tracking with per-track embedding cache eliminating identity flicker across frames</li>
+              <li><span class="sd"></span>JWT + RBAC security, encrypted-at-rest FAISS embeddings, PII masking, and 58+ automated test modules</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- GuardiGO -->
+      <div class="proj-card rust-card">
+        <div class="proj-header">
+          <div class="proj-title">GuardiGO</div>
+        </div>
+        <div class="proj-subtitle">Enterprise AI Safety Gateway · 31 Guardrails · Rust + Python Microservices · GPU-Accelerated ML Inference</div>
+        <div class="jd-row">
+          <span class="jd-p">GPU Inference Adaptation</span>
+          <span class="jd-p">Deep Learning (Transformers)</span>
+          <span class="jd-p">Algorithm Optimization</span>
+          <span class="jd-p">Tool Performance & Limitation Analysis</span>
+        </div>
+        <div class="proj-accordion">
+          <div class="acc-tab active" onclick="toggle(this)"><span>Use Case</span><span class="acc-arrow">▲</span></div>
+          <div class="acc-body open">
+            <div class="use-case-text">Enables regulated enterprises (FinTech, Healthcare, Legal) to deploy LLMs safely — every input and output passes through configurable guardrails that block toxicity, redact PII, detect prompt injections, and enforce business policies without retraining any underlying model.</div>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Tech Stack</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <div class="stack-rows">
+              <div class="stack-row"><span class="stack-cat">Languages</span><div class="tags"><span class="tag lang">Python</span><span class="tag hl-rust">⚙ Rust</span><span class="tag lang">TypeScript</span><span class="tag lang">SQL</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Frameworks</span><div class="tags"><span class="tag fw">FastAPI</span><span class="tag hl-rust">⚙ Axum (Rust)</span><span class="tag fw">React</span><span class="tag fw">NeMo Guardrails</span><span class="tag fw">LiteLLM</span><span class="tag fw">Colang 2.x</span></div></div>
+              <div class="stack-row"><span class="stack-cat">AI / ML</span><div class="tags"><span class="tag model">LlamaGuard 7B</span><span class="tag model">ShieldGemma 2B</span><span class="tag model">Detoxify</span><span class="tag model">Presidio</span><span class="tag model">Piiranha</span><span class="tag model">Vigil</span><span class="tag model">Prompt-Guard-86M</span><span class="tag model">FinBERT</span><span class="tag model">HalluDetector</span><span class="tag model">Sentence-Transformers</span><span class="tag model">PyTorch</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Database</span><div class="tags"><span class="tag db">PostgreSQL</span><span class="tag db">SQLite</span><span class="tag db">etcd (config)</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Infra</span><div class="tags"><span class="tag infra">Docker Compose</span><span class="tag infra">Apache APISIX</span><span class="tag infra">NVIDIA CUDA</span><span class="tag infra">Prometheus</span><span class="tag infra">Arize Phoenix</span><span class="tag infra">Alembic</span></div></div>
+            </div>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Project Flow</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <ol class="flow-steps">
+              <li><span class="sn">01</span>User message enters via OpenAI-compatible API → Apache APISIX handles auth (SSO / Kerberos / LDAP)</li>
+              <li><span class="sn">02</span>Smart Router (Sentence Transformers + keyword/LLM hybrid) classifies content and selects only relevant guardrails</li>
+              <li><span class="sn">03</span>Input pipeline: PII redaction → prompt injection detection → toxicity scoring → LlamaGuard (short-circuit on first block)</li>
+              <li><span class="sn">04</span>Allowed message forwarded to LLM via LiteLLM → output pipeline filters toxicity, secrets, hallucinations, and policy violations</li>
+              <li><span class="sn">05</span>Verdicts, redacted text, and violation logs returned; admin React dashboard tracks full audit trail and pipeline metrics</li>
+            </ol>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Skills Used</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <ul class="skills-ul">
+              <li><span class="sd"></span>Transformer-based safety model integration — LlamaGuard 7B, ShieldGemma 2B, FinBERT, Prompt-Guard-86M with GPU inference</li>
+              <li><span class="sd"></span><span class="hl-rust-text">Rust ML inference optimization with PyTorch tch-rs — 41% faster than Python baseline</span>, GPU auto-detection (directly matches JD: adapt algorithms to run on GPU)</li>
+              <li><span class="sd"></span>3-tier Smart Router using Sentence Transformers — tool performance and limitation analysis to selectively route guardrails</li>
+              <li><span class="sd"></span>Microservices architecture with 15+ GPU-accelerated Dockerized services and NVIDIA CUDA profiles</li>
+              <li><span class="sd"></span>Enterprise authentication (LDAP, SSO, Kerberos) via Apache APISIX gateway</li>
+              <li><span class="sd"></span><span class="hl-rust-text">Ported LlamaFirewall to Rust (Axum + tch-rs)</span> — production-grade ML microservice with zero-copy async architecture and GPU auto-detection</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scoutigo -->
+      <div class="proj-card purple-card">
+        <div class="proj-header">
+          <div class="proj-title">Scoutigo</div>
+        </div>
+        <div class="proj-subtitle">Agentic AI Hiring Platform · YOLOv8 Proctoring · Multi-modal Video Analysis · MediaPipe · OpenCV</div>
+        <div class="jd-row">
+          <span class="jd-p">YOLO (Explicitly in JD)</span>
+          <span class="jd-p">Deep Learning for Image Analysis</span>
+          <span class="jd-p">OpenCV Image Processing</span>
+          <span class="jd-p">GPU Inference</span>
+          <span class="jd-p">Feature Detection</span>
+        </div>
+        <div class="proj-accordion">
+          <div class="acc-tab active" onclick="toggle(this)"><span>Use Case</span><span class="acc-arrow">▲</span></div>
+          <div class="acc-body open">
+            <div class="use-case-text">Automates high-volume recruiting by replacing manual resume triage and inconsistent interviews with AI screening, 12-dimension insight scoring, proctored video interviews with integrity analysis, and full pipeline orchestration from JD creation through offer and pre-onboarding.</div>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Tech Stack</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <div class="stack-rows">
+              <div class="stack-row"><span class="stack-cat">Languages</span><div class="tags"><span class="tag lang">Python</span><span class="tag lang">TypeScript</span><span class="tag lang">SQL</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Frameworks</span><div class="tags"><span class="tag fw">FastAPI</span><span class="tag fw">Next.js</span><span class="tag fw">LangChain</span><span class="tag fw">LangGraph</span><span class="tag fw">CrewAI</span><span class="tag fw">LiteLLM</span></div></div>
+              <div class="stack-row"><span class="stack-cat">CV / Image</span><div class="tags"><span class="tag cv">YOLOv8n</span><span class="tag cv">OpenCV</span><span class="tag cv">dlib</span><span class="tag cv">MediaPipe FaceMesh</span><span class="tag cv">face-api.js</span><span class="tag cv">solvePnP (head-pose)</span><span class="tag cv">TensorFlow.js</span></div></div>
+              <div class="stack-row"><span class="stack-cat">AI / ML</span><div class="tags"><span class="tag model">Qwen2.5:7b</span><span class="tag model">Phi-4:14b</span><span class="tag model">llama3.2-vision</span><span class="tag model">LLaVA</span><span class="tag model">Whisper (ASR)</span><span class="tag model">SBERT</span><span class="tag model">Piper TTS</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Database</span><div class="tags"><span class="tag db">PostgreSQL (JSONB/ARRAY)</span><span class="tag db">OpenSearch</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Infra</span><div class="tags"><span class="tag infra">Docker</span><span class="tag infra">Ollama</span><span class="tag infra">FFmpeg</span><span class="tag infra">ONNX Runtime</span></div></div>
+            </div>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Project Flow</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <ol class="flow-steps">
+              <li><span class="sn">01</span>JD generated via LLM → resumes uploaded → 12 insight calculators score each with SBERT semantic matching → deterministic eligibility gate (≥60 selected)</li>
+              <li><span class="sn">02</span>Shortlisted candidate enters AI screening → Piper TTS avatar asks LangGraph-generated questions → candidate responds via audio</li>
+              <li><span class="sn">03</span>Whisper transcribes responses → v2 multi-modal scorer evaluates transcript + 7 vision metrics via OpenCV frame sampling every 3s + vision LLM</li>
+              <li><span class="sn">04</span>YOLOv8n detects electronic devices and multiple persons → dlib + MediaPipe extract facial landmarks for head-pose estimation via OpenCV solvePnP → gaze integrity flags generated</li>
+              <li><span class="sn">05</span>Pipeline advances through manager/HR rounds → offer workflow → join-intent predicted from pre-onboarding engagement signals</li>
+            </ol>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Skills Used</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <ul class="skills-ul">
+              <li><span class="sd"></span>YOLOv8n real-time object detection for interview proctoring — device and multi-person violation detection (YOLO explicitly mentioned in JD)</li>
+              <li><span class="sd"></span>Multi-modal video analysis pipeline — OpenCV frame sampling + Whisper ASR transcription + Vision LLM scoring across 7 visual dimensions</li>
+              <li><span class="sd"></span>MediaPipe landmark detection and head-pose estimation via OpenCV solvePnP for gaze and integrity analysis</li>
+              <li><span class="sd"></span>SBERT semantic matching with OpenSearch hybrid sourcing and 12 modular configurable insight calculators</li>
+              <li><span class="sd"></span>LangGraph and CrewAI agent orchestration for dynamic question generation, deep-dive interview flows, and analytics summaries</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ClickInsight -->
+      <div class="proj-card green-card">
+        <div class="proj-header">
+          <div class="proj-title">ClickInsight</div>
+        </div>
+        <div class="proj-subtitle">Conversational BI Platform · Agentic Analytics Engineering · NL-to-Dashboard · Multi-DB Support</div>
+        <div class="jd-row">
+          <span class="jd-p">Analytics</span>
+          <span class="jd-p">Data for Decision Making</span>
+          <span class="jd-p">ML Techniques</span>
+          <span class="jd-p">Tool Performance Analysis</span>
+        </div>
+        <div class="proj-accordion">
+          <div class="acc-tab active" onclick="toggle(this)"><span>Use Case</span><span class="acc-arrow">▲</span></div>
+          <div class="acc-body open">
+            <div class="use-case-text">Compresses weeks of manual data warehouse modeling into an automated agentic pipeline — raw database introspection to Kimball star-schema classification, dbt model generation, Cube.js semantic layers, and AI-driven dashboards with natural-language querying and human-in-the-loop approval.</div>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Tech Stack</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <div class="stack-rows">
+              <div class="stack-row"><span class="stack-cat">Languages</span><div class="tags"><span class="tag lang">Python</span><span class="tag lang">TypeScript</span><span class="tag lang">SQL</span><span class="tag lang">Jinja2</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Frameworks</span><div class="tags"><span class="tag fw">FastAPI</span><span class="tag fw">React</span><span class="tag fw">dbt-core</span><span class="tag fw">Cube.js</span><span class="tag fw">PocketFlow</span><span class="tag fw">Dash</span><span class="tag fw">Plotly</span></div></div>
+              <div class="stack-row"><span class="stack-cat">AI / ML</span><div class="tags"><span class="tag model">MiniLM-L6-v2</span><span class="tag model">Ollama (qwen3:8b)</span><span class="tag model">gpt-4o-mini</span><span class="tag model">LiteLLM</span><span class="tag model">scikit-learn</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Database</span><div class="tags"><span class="tag db">PostgreSQL</span><span class="tag db">MySQL</span><span class="tag db">ClickHouse</span><span class="tag db">DuckDB</span><span class="tag db">Snowflake</span><span class="tag db">Qdrant (vectors)</span><span class="tag db">SQLite</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Infra</span><div class="tags"><span class="tag infra">Docker</span><span class="tag infra">nginx</span><span class="tag infra">Alembic</span><span class="tag infra">SAML/Keycloak SSO</span></div></div>
+            </div>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Project Flow</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <ol class="flow-steps">
+              <li><span class="sn">01</span>User connects source database → introspection agent scans schema and routes to appropriate pipeline</li>
+              <li><span class="sn">02</span>Business naming agent generates human-readable column and table definitions via LLM</li>
+              <li><span class="sn">03</span>6-stage hybrid classifier (Kimball rules + graph topology + statistics + LLM) assigns star-schema roles with confidence scoring (threshold 0.70)</li>
+              <li><span class="sn">04</span>dbt SQL/YAML models and Cube.js semantic layer auto-generated → Qdrant indexes cube metadata via MiniLM embeddings</li>
+              <li><span class="sn">05</span>User queries in natural language → semantic entity matching maps to Cube entities → Plotly/Dash renders interactive dashboard</li>
+            </ol>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Skills Used</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <ul class="skills-ul">
+              <li><span class="sd"></span>Multi-stage hybrid ML pipeline — Kimball rule engines, graph topology, statistical features, and LLM for ambiguous classification with confidence-based routing</li>
+              <li><span class="sd"></span>Semantic vector search with Qdrant + MiniLM sentence-transformers for NL-to-schema entity mapping</li>
+              <li><span class="sd"></span>Multi-database connector engineering across 5 DB engines (PostgreSQL, MySQL, ClickHouse, DuckDB, Snowflake)</li>
+              <li><span class="sd"></span>PocketFlow multi-agent orchestration with schema drift detection and async background job architecture</li>
+              <li><span class="sd"></span>Analytics dashboard design with Plotly/Dash for data-driven decision making</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Journey Assist -->
+      <div class="proj-card blue-card">
+        <div class="proj-header">
+          <div class="proj-title">Journey Assist</div>
+        </div>
+        <div class="proj-subtitle">AI Conversion Optimization · HMM + BiLSTM Time-Series · Self-hosted RAG · Banking Grade · Full MLOps</div>
+        <div class="jd-row">
+          <span class="jd-p">Deep Learning (LSTM / Transformers)</span>
+          <span class="jd-p">Hyperparameter Tuning</span>
+          <span class="jd-p">Model Deployment</span>
+          <span class="jd-p">Analytics & Decision Making</span>
+        </div>
+        <div class="proj-accordion">
+          <div class="acc-tab active" onclick="toggle(this)"><span>Use Case</span><span class="acc-arrow">▲</span></div>
+          <div class="acc-body open">
+            <div class="use-case-text">Eliminates manual funnel setup for product and growth teams — uses unsupervised ML to discover user journey patterns and automatically triggers personalized UI interventions (chat, nudge, modal, floater) at the right moment. Built for privacy-sensitive industries like digital banking with full self-hosted deployment.</div>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Tech Stack</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <div class="stack-rows">
+              <div class="stack-row"><span class="stack-cat">Languages</span><div class="tags"><span class="tag lang">Python</span><span class="tag lang">TypeScript</span><span class="tag lang">Lua</span><span class="tag lang">SQL</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Frameworks</span><div class="tags"><span class="tag fw">FastAPI</span><span class="tag fw">React</span><span class="tag fw">PyTorch</span><span class="tag fw">LiteLLM</span><span class="tag fw">Ragbits</span><span class="tag fw">Crawl4AI</span><span class="tag fw">hmmlearn</span></div></div>
+              <div class="stack-row"><span class="stack-cat">AI / ML</span><div class="tags"><span class="tag model">Gaussian HMM</span><span class="tag model">BiLSTM (42-d · 12 heads)</span><span class="tag model">TorchScript Deployment</span><span class="tag model">all-MiniLM-L6-v2</span><span class="tag model">gpt-4o-mini</span><span class="tag model">Presidio (PII)</span><span class="tag model">Optuna (HPO)</span><span class="tag model">KS Drift Detection</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Database</span><div class="tags"><span class="tag db">PostgreSQL 15 (~57 tables)</span><span class="tag db">Redis 7 (cache)</span><span class="tag db">Qdrant (behavioral + content)</span></div></div>
+              <div class="stack-row"><span class="stack-cat">Infra</span><div class="tags"><span class="tag infra">OpenResty (Nginx + Lua)</span><span class="tag infra">Podman/Docker Compose</span><span class="tag infra">Prometheus</span><span class="tag infra">APScheduler</span></div></div>
+            </div>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Project Flow</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <ol class="flow-steps">
+              <li><span class="sn">01</span>Embeddable JS Widget SDK collects browser telemetry → FastAPI ingests events into PostgreSQL with idempotent event keys</li>
+              <li><span class="sn">02</span>ml-trigger worker runs Gaussian HMM → multi-task BiLSTM predicts conversion likelihood, friction score, and optimal intervention format from 42-d feature vector</li>
+              <li><span class="sn">03</span>Intervention arbitrator applies cooldowns and receptiveness gates → LLM enriches copy → widget rendered in browser</li>
+              <li><span class="sn">04</span>Crawl4AI + Playwright indexes site content into Qdrant → RAG chatbot answers queries via hybrid dense + BM25 + HyDE retrieval with Presidio PII redaction</li>
+              <li><span class="sn">05</span>Kolmogorov–Smirnov drift monitor detects distribution shift → APScheduler triggers automated retraining with Optuna HPO</li>
+            </ol>
+          </div>
+          <div class="acc-tab" onclick="toggle(this)"><span>Skills Used</span><span class="acc-arrow">▼</span></div>
+          <div class="acc-body">
+            <ul class="skills-ul">
+              <li><span class="sd"></span>Deep learning for time-series behavioral data — multi-task BiLSTM with 42-d input, 12 prediction heads, and TorchScript production deployment</li>
+              <li><span class="sd"></span>Unsupervised ML — Gaussian HMM for hidden pattern discovery from sequential data without labeled funnels</li>
+              <li><span class="sd"></span>Hyperparameter tuning via Optuna with KS drift detection and APScheduler automated retraining</li>
+              <li><span class="sd"></span>Hybrid RAG pipeline — Qdrant dense + BM25 sparse + HyDE query expansion with 38-category LLM guardrails</li>
+              <li><span class="sd"></span>OpenResty Lua gateway with OIDC/LDAP/JWT enterprise authentication and Redis rate limiting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section reveal">
+    <div class="section-eyebrow">04 — Skills</div>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-label">CV Models</div>
+        <div class="skill-tags">
+          <span class="sk hl">YOLOv8n</span><span class="sk hl">ArcFace R50</span><span class="sk hl">SCRFD-10G</span><span class="sk">OSNet</span><span class="sk">OpenVINO</span><span class="sk">MediaPipe</span><span class="sk">dlib</span><span class="sk">ByteTrack</span><span class="sk">ONNX Runtime</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Image Processing</div>
+        <div class="skill-tags">
+          <span class="sk hl">OpenCV</span><span class="sk">Hailo NPU (HEF)</span><span class="sk">Frigate NVR</span><span class="sk">SCRFD</span><span class="sk">Cosine ANN</span><span class="sk">pgvector HNSW</span><span class="sk">FAISS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Deep Learning</div>
+        <div class="skill-tags">
+          <span class="sk hl">PyTorch</span><span class="sk">BiLSTM</span><span class="sk">CNN</span><span class="sk">Transformers</span><span class="sk">TorchScript</span><span class="sk">Optuna (HPO)</span><span class="sk">scikit-learn</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">LLM & Agents</div>
+        <div class="skill-tags">
+          <span class="sk hl">LangGraph</span><span class="sk">CrewAI</span><span class="sk">LiteLLM</span><span class="sk">Ollama</span><span class="sk">NeMo Guardrails</span><span class="sk">RAG (Qdrant + BM25)</span><span class="sk">Presidio</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-tags">
+          <span class="sk hl">Python</span><span class="sk hl">Rust</span><span class="sk">TypeScript</span><span class="sk">SQL</span><span class="sk">Lua</span><span class="sk">Jinja2</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Databases</div>
+        <div class="skill-tags">
+          <span class="sk">PostgreSQL</span><span class="sk">pgvector</span><span class="sk">Qdrant</span><span class="sk">Redis</span><span class="sk">OpenSearch</span><span class="sk">ClickHouse</span><span class="sk">DuckDB</span><span class="sk">FAISS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Frameworks</div>
+        <div class="skill-tags">
+          <span class="sk">FastAPI</span><span class="sk">React</span><span class="sk">Next.js</span><span class="sk">SQLAlchemy</span><span class="sk">dbt-core</span><span class="sk">Cube.js</span><span class="sk">PyTorch</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Infra & DevOps</div>
+        <div class="skill-tags">
+          <span class="sk">Docker</span><span class="sk">MQTT</span><span class="sk">Prometheus</span><span class="sk">Grafana</span><span class="sk">Alembic</span><span class="sk">NVIDIA CUDA</span><span class="sk">FFmpeg</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <div class="section-eyebrow" style="justify-content:center;">05 — Contact</div>
+    <h2 class="contact-title">Let's Connect</h2>
+    <p class="contact-sub">
+      I'm actively targeting roles in Computer Vision, ML Engineering, and AI systems — particularly in semiconductor, industrial, and applied AI domains. Open to opportunities in Bengaluru, Chennai, and remote.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:1947swarna@gmail.com" class="contact-link email">✉ 1947swarna@gmail.com</a>
+      <a href="https://github.com/Swarrna23" target="_blank" class="contact-link gh">⌥ GitHub</a>
+      <a href="https://www.linkedin.com/in/swarrna-rathna" target="_blank" class="contact-link li">in LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Swarna Rathna S. &nbsp;·&nbsp; Built with HTML/CSS &nbsp;·&nbsp; Chennai, India
+</footer>
+
+<script>
+// accordion toggle
+function toggle(tab){
+  const body = tab.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  // close all in same card
+  const card = tab.closest('.proj-accordion');
+  card.querySelectorAll('.acc-body').forEach(b=>b.classList.remove('open'));
+  card.querySelectorAll('.acc-tab').forEach(t=>{t.classList.remove('active');t.querySelector('.acc-arrow').textContent='▼';});
+  if(!isOpen){
+    body.classList.add('open');
+    tab.classList.add('active');
+    tab.querySelector('.acc-arrow').textContent='▲';
+  }
+}
+
+// scroll reveal
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
